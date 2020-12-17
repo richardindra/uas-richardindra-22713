@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-card class="ion-text-center ion-margin-bottom">
+      <ion-card-header>
+        <ion-icon name="person-circle-outline" style="font-size: 135px"></ion-icon>
+        <ion-card-title>{{username}}</ion-card-title>
+        <p style="font-size: large;">00000022713</p>
+      </ion-card-header>
+      <ion-button (click)="logout()">LOGOUT</ion-button>
+      <p class="ion-text-center;" style="font-size: medium;">Kelas online kurang mantap :(</p>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title style="padding-bottom: 15px;">My Feeds</ion-card-title>
+        <ion-list>
+          <ion-item *ngIf="userCheckins.length == 0">
+            <ion-label>No check in found.</ion-label>
+          </ion-item>
+          <ion-item *ngFor="let userCheckin of userCheckins.reverse(); let i = index">
+            <ion-label class="ion-text-wrap">
+              {{username}} {{userCheckin[0]}}<br>
+              <small>{{userCheckin[1] | date :'short'}}</small>
+            </ion-label>
+            <ion-button color="danger" slot="end" (click)="removeCheckin(userCheckins.length - i - 1)">
+              <ion-icon name="close"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

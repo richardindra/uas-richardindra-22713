@@ -1,0 +1,36 @@
+<ion-content>
+  <div #map id="map"></div>
+</ion-content>
+
+<ion-footer class="ion-no-border ion-padding">
+  <ion-grid>
+    <ion-row *ngIf="!isCheckIn">
+      <ion-col>
+        <ion-button expand="full" (click)="toggleCheckIn()">Check-in Location</ion-button>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-button (click)="centerMap()">
+          <ion-icon name="locate"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="isCheckIn">
+      <ion-col>
+        <ion-item style="margin-top: -10px; margin-bottom: -10px">
+          <ion-label position="floating">Where am I?</ion-label>
+          <ion-input [(ngModel)]="locName"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-button color="primary" (click)="addCheckin()">
+          Check-in
+        </ion-button>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-button color="danger" (click)="toggleCheckIn()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

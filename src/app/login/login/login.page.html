@@ -1,0 +1,43 @@
+<ion-content>
+  <div class="vertical-center">
+    <div class="center">
+      <img src="assets/icon/umn.png" style="height: 150px; width: 150px;">
+    </div>
+  </div>
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value)">
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" formControlName="email" required></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="error-message"
+             *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="password" required></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div class="error-message"
+             *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="bottom">
+      <p>
+        Don't have an account yet?
+        <a (click)="goToRegistrationPage()" color="primary">Register here!</a>
+      </p>
+      <ion-button type="submit" fill="outline" expand="block" size="large" [disabled]="!validations_form.valid">LOGIN</ion-button>
+      <label class="error-message">{{errorMessage}}</label>
+    </div>
+  </form>
+</ion-content>
