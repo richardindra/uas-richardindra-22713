@@ -1,0 +1,7 @@
+{
+  "name": "UAS_CrossPlatform_Lab",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
